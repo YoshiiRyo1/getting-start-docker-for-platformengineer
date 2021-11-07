@@ -52,46 +52,122 @@ AWS Managed Temporary Credentials (AMTC) を無効にしておきます。
 
 まずは docker がインストールされていることの確認をします。
 
-```
-docker -v
+```Shell
+$ docker -v
 ```
 
 万が一インストールされていなければインストールします。
 
-```
+```Shell
 sudo yum install -y docker
+```
+
+## ハンズオンディレクトリを作ってみよう
+
+ハンズオン用のディレクトリを作っておきます。  
+
+```Shell
+mkdir handson
+cd handson
 ```
 
 ## Nginxを動かしてみよう
 
-[bash]
+```Shell
 docker run --name web -d -p 80:80 nginx
-[/bash]
+```
 
+ローカルに Web サーバーが起動したはずです。  
+確認してみます。  
+
+```Shell
+curl http://localhost/
+```
+
+「Welcome to nginx!」というデフォルトのサンプルページが表示されました。  
 
 ```
-curl http://localhost/
 <!DOCTYPE html>
 <html>
 <head>
 <title>Welcome to nginx!</title>
-<style>
-html { color-scheme: light dark; }
-body { width: 35em; margin: 0 auto;
-font-family: Tahoma, Verdana, Arial, sans-serif; }
-</style>
-</head>
-<body>
-<h1>Welcome to nginx!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
+～～省略～～
+```
 
-<p>For online documentation and support please refer to
-<a href="http://nginx.org/">nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
+```Shell
+docker ps -a
+```
 
-<p><em>Thank you for using nginx.</em></p>
-</body>
-</html>
+```
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                               NAMES
+4477a272ce0c   nginx     "/docker-entrypoint.…"   3 minutes ago   Up 3 seconds   0.0.0.0:80->80/tcp, :::80->80/tcp   web
+```
+
+
+```Shell
+docker stop web
+```
+
+```Shell
+curl http://localhost/
+```
+
+
+```Shell
+docker ps -a
+```
+
+```
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                      PORTS     NAMES
+4477a272ce0c   nginx     "/docker-entrypoint.…"   5 minutes ago   Exited (0) 52 seconds ago             web
+```
+
+
+```Shell
+docker rm web
+```
+
+何も表示されなくなりました。（つまり削除された）  
+
+```
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+
+## Dockerfileを作ってみよう
+
+```Shell
+touch Dockerfile
+```
+
+![image](img/cloud9_leftmenu.png)
+
+
+```Shell
+docker build -t testweb .
+```
+
+
+
+```Shell
+docker images
+```
+
+```
+REPOSITORY      TAG          IMAGE ID       CREATED        SIZE
+testweb         latest       87a94228f133   3 weeks ago    133MB
+```
+
+
+```Shell
+
+```
+
+
+```Shell
+
+```
+
+
+```Shell
+
 ```
