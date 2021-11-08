@@ -19,7 +19,6 @@ Attach アクセス権限ポリシー画面で割り当てるポリシーは以�
 ※ 勉強会用です。本番アカウントでは適切に権限を絞ってください。  
 
  * AmazonEC2ContainerRegistryFullAccess
- * ElasticLoadBalancingFullAccess
  * AmazonECS_FullAccess
  * IAMFullAccess
 
@@ -163,6 +162,7 @@ docker rm web
 何も表示されなくなりました。（つまり削除された）  
 
 ```
+$ docker ps -a
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
 
