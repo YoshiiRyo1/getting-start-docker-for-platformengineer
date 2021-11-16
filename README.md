@@ -315,6 +315,11 @@ exit で抜けます。
 exit
 ```
 
+
+```Shell
+docker rm -f testweb
+```
+
 ## ログを確認しよう
 
 コンテナでは何らかのプロセスが起動しています。（今回は nginx）  
@@ -417,7 +422,7 @@ docker image prune
 今回は AWS マネージドな ECR へプッシュします。  
 
 勉強会ということで時間単価が安いオレゴンリージョン（us-west-2）を使います。  
-4行目の MYNAME 変数は自分の名前を代入します。  
+4行目の MYNAME 変数は自分の名前を代入します。（半角英数ハイフンのみを使用してください）  
 
 ```Shell
 sudo yum install jq -y
